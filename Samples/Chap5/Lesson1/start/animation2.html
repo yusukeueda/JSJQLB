@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>アニメーション</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<style type="text/css">
+<!--
+#myImage {
+	position:absolute;
+	top:20px;
+	left:100px;
+}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+var NumOfImage = 5		
+var INTERVAL = 200;	
+var currentImg = 0;	
+var timerId;	
+var isAnimating = false;
+var stopped = false;
+
+$(function(){
+	// イメージのプリロード
+	for(var i = 0; i < NumOfImage; i++) {
+		$("<img>").attr("src", "images/img" + i + ".png");
+	}		
+	
+	// 最初のイメージを<div>エレメントに追加
+	$("<img id='myImage' width='80' height='120'>")
+			.attr("src", "images/img0.png")
+			.appendTo("#myDiv");
+			
+	// 「スタート」ボタンをクリック
+	$("#startBtn").click(function(){
+		if (isAnimating) {
+			clearTimeout(timerId);
+			isAnimating = false;
+			$("#startBtn").val("スタート");
+		} else {
+			isAnimating = true;
+			animate();
+			$("#startBtn").val("ストップ");			
+		}
+	});
+});
+
+// パラパラマンガのアニメーションを行う
+function animate() {
+	$("#myImage").attr("src", "images/img" + currentImg + ".png");
+	currentImg++;
+	if (currentImg >= NumOfImage) {	
+		currentImg = 0;
+	}
+	timerId = setTimeout("animate()", INTERVAL);
+}
+
+// -->
+</script>
+	
+</head> 
+
+<body> 
+<form name="form1"><p>
+<input type="button" id="startBtn" value="スタート">
+</p></form>
+
+<div id="myDiv">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>脳トレーニング（四文字熟語）</title>
+
+<script type="text/javascript">
+<!--
+//四文字熟語の前半
+var fHalf = new Array("文武", "疑心",
+		"悪戦", "九夏", "意志", "奮励", "酒池");
+//四文字熟語の後半
+var sHalf = new Array("両道", "暗鬼", 
+		"苦闘", "三伏", "堅固", "努力", "肉林");
+
+//要素数-1までの乱数を戻す
+function getRandom() {
+	return Math.floor(Math.random() * fHalf.length);
+}
+// -->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>脳トレーニング（四文字熟語）</h1>
+<script type="text/javascript">
+<!--
+
+//質問の数
+var numOfQ = 5;
+var num
+var correct = 0;
+
+//出題する
+for (var i = 0; i < numOfQ; i++) {
+	num = getRandom();
+	msg = fHalf[num] + "?"
+	ans = prompt(msg, "");
+	if (ans == sHalf[num]) {
+		correct++;
+	}
+}
+
+//正解率を表示する
+document.write("<h1>正解率:", 
+		Math.round(correct/numOfQ *100),
+		"%</h1>");
+document.write("<p>", numOfQ, "問中", correct, "問正解", "</p>"); 
+// -->
+</script>
+
+</body>
+</html>

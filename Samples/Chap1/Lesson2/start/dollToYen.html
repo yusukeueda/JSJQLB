@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>ドルを円に換算</title>
+
+<script type="text/javascript">
+window.onload = init;
+//イベントハンドラを初期化する
+function init() {
+	document.myForm.calc.onclick= calcValu;
+}
+
+//計算を行う
+function calcValu() {
+	document.myForm.doll.value = document.myForm.yen.value 
+				* document.myForm.rate.value;
+}
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+<form name="myForm">
+	金額：<input type="text" name="yen" size="8">ドル<br>
+	為替レート：<input type="text" name="rate" value="78" size="8">円/ドル
+	<br>
+	<input type="button" name="calc" value="計算"> →
+	<input type="text" name="doll" size="8">円		
+</form>
+</body>
+</html>

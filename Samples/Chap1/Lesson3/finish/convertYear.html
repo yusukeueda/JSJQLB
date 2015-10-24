@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>平成を西暦に変換する</title>
+
+<style type="text/css">
+<!--
+body {
+	font-size: 200%;
+}
+-->
+</style>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<script type="text/javascript">
+<!--
+var heisei;
+var fullYear;
+var message;
+
+heisei = prompt("平成の年号を入力してください", 23);
+fullYear = parseInt(heisei) + 1988;
+message = "平成"+ heisei + "年は" + "西暦"
+			+ fullYear + "年です";
+window.alert(message);
+// -->
+</script>
+
+</body>
+</html>

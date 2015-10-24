@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>タイマーのテスト</title>
+
+<style type="text/css">
+<!--
+body {
+	text-align: center;
+
+}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+window.onload = init;
+
+function init() {
+	document.myForm.change.onclick= changeBG;	
+	window.setTimeout("location.replace('http://google.co.jp')", 10000);	
+}
+
+function changeBG(){
+	window.setTimeout("document.bgColor = 'yellow';", 3000);	
+}
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>タイマーのテスト</h1>
+<form name="myForm"><p>
+<input name="change" type="button" value="チェンジ">
+</p></form>
+</body>
+</html>

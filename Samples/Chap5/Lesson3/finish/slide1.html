@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>スライドショー</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<style type="text/css">
+<!--
+#display {
+	margin: 0 auto 0 auto;
+	height: 450px;
+	width: 600px;
+	border: 2px solid #666;
+}
+
+#display img{
+	position: absolute;
+	width: 600px;
+	height: 450px;
+}
+
+#control {
+	text-align: center;
+}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+var numOfPhoto = 5; //写真の数	
+var currentPhoto =1; //現在の写真の番号	
+
+$(function(){
+	// イメージのプリロード
+	for(var i = 1; i <= numOfPhoto ; i++) {	
+		$("<img>").attr("src", "slides/img" + i + ".jpg");
+	}
+	
+	// 最初のイメージを表示
+	$("#display img").attr("src", "slides/img1.jpg");	
+
+	// 次のスライドへ
+	$("#nextBtn").click(function(){	
+		if (currentPhoto < numOfPhoto) {
+			currentPhoto++;		
+		} else {
+			currentPhoto = 1;
+		};
+		showImage(currentPhoto);
+	});
+
+	// ひとつ前のスライドへ
+	$("#prevBtn").click(function(){	
+		if (currentPhoto == 1) {
+			currentPhoto = numOfPhoto;	
+		} else {
+			currentPhoto--;
+		}
+		showImage(currentPhoto);
+	});
+
+});
+
+// 指定した番号のイメージを表示する
+function showImage(photoNumber) {
+	newSlideSrc ="slides/img" + photoNumber + ".jpg"	
+	// スライドを表示
+	$("#display img").attr("src", newSlideSrc);	
+}
+// -->
+</script>
+
+
+</head>
+
+<body bgcolor="#FFF">
+
+<div id="display">
+<img src="slides/loading.jpg" >
+</div>
+
+<div id="control">
+<input type="button" id="prevBtn" value="前へ">
+<input type="button" id="nextBtn" value="次へ">
+</div>
+
+</body>
+</html>

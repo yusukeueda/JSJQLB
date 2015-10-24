@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>金利計算</title>
+
+<style type="text/css">
+<!--
+body {
+	text-align: center;
+}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+window.onload = init;
+
+function init() {
+	document.calcForm.calc.onclick= calcUketori;
+}
+
+function calcUketori(){
+	var kikan, rishi, gankin;
+	gankin = parseInt(document.calcForm.gankin.value);
+	rishi = parseFloat(document.calcForm.rishi.value);
+	kikan = parseInt(document.calcForm.kikan.value);
+	
+	document.calcForm.uketori.value  = kinri(gankin, kikan, rishi);
+}
+//複利計算を行う
+function kinri(gankin, kikan, rishi) {
+	var uketori;
+	uketori = gankin;
+	for (var i=1; i <= kikan; i++ ) { 
+		uketori = uketori * (1 + rishi / 100);
+	}
+	return Math.round(uketori);
+}
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+<h1>複利計算</h1>
+<form name="calcForm">
+<p>
+金利：<input type="text" name="rishi" size="8">％<br>
+金額：<input type="text" name="gankin" size="8">円<br>
+預入期間：<input type="text" name="kikan" size="3">年<br>
+<input name="calc" type="button" value="計算">
+<input type="reset" value="クリア"><br>
+受取金額：<input type="text" name="uketori" size="15">円<br>
+</p>
+</form>
+</body>
+</html>

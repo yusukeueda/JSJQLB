@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>金利計算</title>
+
+<style type="text/css">
+<!--
+body {
+	text-align: center;
+}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+//複利計算を行う
+function kinri(gankin, kikan, rishi) {
+	var uketori;
+	uketori = gankin;
+	for (var i=1; i <= kikan; i++ ) { 
+		uketori = uketori * (1 + rishi / 100);
+	}
+	return Math.round(uketori);
+}
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+<h1>複利計算</h1>
+
+</body>
+</html>

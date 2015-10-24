@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>Dateオブジェクトを使う</title>
+
+<style type="text/css">
+body {
+	text-align: center;
+
+}
+</style>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<script type="text/javascript">
+<!--
+var now, heisei, theDate;
+var days = new Array("日", "月", "火", "水", "木", "金", "土");
+now = new Date();
+heisei =now.getFullYear() - 1988;
+theDay =days[now.getDay()];
+theDate = "平成" + heisei + "年" 
+	+ (now.getMonth() +1) + "月" 
+	+ now.getDate() + "日"
+	+ "（" + theDay + "）";
+document.write("<h1>", theDate, "</h1>");
+
+//来年の今日の曜日を求める
+var theDate1, theDay2;
+theDate1 = new Date();
+theDate1.setFullYear(theDate1.getFullYear() + 1);
+document.write("<h1>", "一年後の今日は",
+	days[theDate1.getDay()],  "曜日です</h1>");
+
+//今年の残り日数を表示する
+var newYearsDay, diff;
+newYearsDay = new Date(now.getFullYear() +1,
+			 0, 1);
+diff = Math.ceil((newYearsDay.getTime() - now.getTime())
+		/ (24 * 60 * 60 * 1000));
+document.write("<h1>", "今年も残り",
+	diff, "日です</h1>");
+// -->
+</script>
+
+</body>
+</html>

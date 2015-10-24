@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>Stringオブジェクトの操作</title>
+
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<script type="text/javascript">
+<!--
+var myStr;
+myStr = new String("ソシム株式会社");
+myStr = myStr.fontcolor("green");
+myStr = myStr.link("http://www.socym.co.jp");
+document.write("<h1>");
+document.write(myStr);
+document.write("</h1>");
+
+myStr = "JavaScriptレッスン(3)-文字列の基本操作";
+document.write("<p>");
+var aChar;
+for(var i = 0; i < myStr.length; i++) {
+	aChar = myStr.charAt(i).fontsize((i %7) + 1);
+	document.write(aChar);	
+}
+document.write("</p>");
+
+// -->
+</script>
+
+</body>
+</html>

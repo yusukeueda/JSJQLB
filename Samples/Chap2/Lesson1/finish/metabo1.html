@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>メタボリック診断</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<script type="text/javascript">
+<!--
+var refValueMan = 85;
+var refValueWoman = 95;
+var refValue;
+var isMan;
+var theWaist;	
+
+isMan = confirm("あなたは男性ですか？");
+if (isMan) {
+	refValue = refValueMan;
+} else {
+	refValue = refValueWoman;
+}
+
+theWaist = prompt("ウエストサイズを入力してください", "");	
+theWaist = parseInt(theWaist);	
+
+if (theWaist == refValue) {
+	alert("ぎりぎりメタボリックです");
+} else if (theWaist > refValue){
+	alert("メタボリックの可能性が大です");
+} else {
+	alert("メタボリックではなさそうです");
+}
+
+// -->
+</script>
+
+</body>
+</html>

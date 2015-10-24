@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>スライドパズル</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<style type="text/css">
+body {
+	text-align: center;
+	padding: 20px;
+}
+</style>
+
+<script type="text/javascript">
+<!--
+var empty = 15;	//空のピースの位置
+
+$(function(){
+	// ピースを表示する
+	for (var i = 0; i < 16; i++) {	
+		$("<img>")	
+			.attr("src",  "imgs/img-" + i + ".png")	
+			.attr("id", "I" + i )	
+			.attr("width", 125)	//幅
+			.attr("height", 125)	//高さ
+			.click(function(){	
+				check($(this).attr("id"));	
+			})
+			.appendTo("#board");	
+		// 4個ずつ改行を出力
+		if (i % 4 == 3) {	
+			$("#board").append("<br>");
+		}
+	}
+
+	// ピースをシャッフルする
+	$("#shuffle").click(shuffleImgs);
+});
+
+
+// ピースが移動可能であれば入れ替える
+function check(id) {
+	var img1, img2;
+	var hit = false;
+	//ピースの番号を取り出す
+	var num = parseInt(id.substring(1));		
+	//ピースが移動可能かを調べる
+	if ((num == (empty - 4)) || (num == (empty + 4))) {	
+		hit = true;
+	} else if (((num % 4) != 0) && ((num - 1) == empty)) {
+		hit = true;
+	} else if (((num % 4) != 3) && ((num + 1) == empty)) {
+		hit = true;
+	}
+
+	//イメージを入れ替える
+	if (hit == true) {		
+		img1 = $("#I" + num); // クリックされたピース
+		img2 = $("#I" + empty);	// 空のピース
+		var tmp = img1.attr("src");
+		img1.attr("src", img2.attr("src"));
+		img2.attr("src", tmp);
+		empty = num
+	}
+}
+
+// ピースをランダムに並び替える
+var counter = 0;	
+function shuffleImgs(){
+	imgNum = Math.floor(Math.random() * 16);
+	check("I" + imgNum);
+	timer  = setTimeout("shuffleImgs()", 10);	
+	if (counter == 300) {	
+		clearTimeout(timer);
+		counter = 0;
+	} else {
+		counter++;
+	}
+}
+//-->
+</script>
+
+</head>
+<body bgcolor="#FFFFFF">
+
+<h1>15パズル</h1>
+<hr>
+
+<form name="myForm"><p>
+<input id="shuffle" type="button" value="並び替える">
+</p></form>
+
+<div id="board"></div>
+
+</body>
+</html>

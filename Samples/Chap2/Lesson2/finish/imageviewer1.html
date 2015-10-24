@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>イメージビューア1</title>
+
+<style type="text/css">
+<!--
+body {
+	text-align: center;
+}
+-->
+</style>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>イメージビューア1</h1>
+<script type="text/javascript">
+<!--
+var img;
+var numOfImages = 15;	
+for (var i=0; i < numOfImages; i++) {
+	img = "img" + i + ".jpg";	
+	document.write("<a href = 'images/" + img + "'",
+			" target='_blank'", ">");	
+	document.write("<img src='thumbnails/" + img + "'>");
+	document.write("</a>");
+	if (( i+ 1) % 5 ==0) {
+		document.write("<br>");
+	}
+}
+// -->
+</script>
+
+</body>
+</html>

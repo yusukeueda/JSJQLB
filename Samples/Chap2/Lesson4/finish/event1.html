@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>イベントのテスト</title>
+<style type="text/css">
+body {
+	text-align: center;
+}
+</style>
+
+<script type="text/javascript">
+<!--
+window.onload = init;	
+
+function init() {	
+	document.form1.btn1.onclick= clickCheck;
+}
+
+var count = 0;	
+function clickCheck(){	
+	++count;	
+	alert ("クリック回数:" + count);	
+}
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+<h1>イベントハンドラのテスト1</h1>
+
+<form name="form1">
+<p>
+<input name="btn1" type="button" value="クリック">
+</p>
+</form>
+
+</body>
+</html>

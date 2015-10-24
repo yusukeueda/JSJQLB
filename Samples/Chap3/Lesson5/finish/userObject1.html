@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>ユーザ定義オブジェクト</title>
+<style type="text/css">
+p{font-size: 150%;}
+</style>
+
+<script type="text/javascript">
+<!--
+// Personオブジェクトを定義
+function Person(name, birthday) {
+	this.name = name;
+	this.birthday = birthday;
+}
+
+function getAge() {
+	var age;
+	var justNow = new Date();
+	// 今日の午前0時
+	var today = new Date(justNow.getFullYear(), justNow.getMonth(),
+						justNow.getDate());
+	// 今年
+	var nowYear =  today.getFullYear();
+	// 生まれた年
+	var birthYear = this.birthday.getFullYear();
+	
+	// 今年の誕生日の午前0時
+	var thisYearBirthday = new Date(today.getFullYear(), 
+								this.birthday.getMonth(),
+								this.birthday.getDate());
+	if (today.getTime() >= thisYearBirthday.getTime() ) {
+		// 誕生日が過ぎていれば	
+		age =  nowYear - birthYear ;
+	} else {
+		age =  nowYear - birthYear - 1;
+	}
+	return age;
+}
+
+//Person.prototype.getAge = getAge;
+Person.prototype.getAge = function() {
+	var age;
+	var justNow = new Date();
+	// 今日の午前0時
+	var today = new Date(justNow.getFullYear(), justNow.getMonth(),
+						justNow.getDate());
+	// 今年
+	var nowYear =  today.getFullYear();
+	// 生まれた年
+	var birthYear = this.birthday.getFullYear();
+	
+	// 今年の誕生日の午前0時
+	var thisYearBirthday = new Date(today.getFullYear(), 
+								this.birthday.getMonth(),
+								this.birthday.getDate());
+	if (today.getTime() >= thisYearBirthday.getTime() ) {
+		// 誕生日が過ぎていれば	
+		age =  nowYear - birthYear ;
+	} else {
+		age =  nowYear - birthYear - 1;
+	}
+	return age;
+}
+
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+<script type="text/javascript">
+<!--
+var friends = new Array(3);
+friends[0] = new Person("井上五郎", new Date(1987, 8, 21));
+friends[1] = new Person("田中花子", new Date(1959, 7, 3));
+friends[2] = new Person("猫山一郎", new Date(1993, 10, 2));
+
+for (var i = 0; i <= friends.length - 1; i ++) {
+	document.write("<p>", friends[i].name,  ": ",
+		friends[i].birthday.getFullYear(), "年",
+		friends[i].birthday.getMonth() + 1, "月",
+		friends[i].birthday.getDate(), "日生まれ ",
+		friends[i].getAge(), "才",	
+				"</p>");
+}
+// -->
+</script>
+</body>
+</html>

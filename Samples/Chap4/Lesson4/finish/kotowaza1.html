@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>DOMの操作</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<style type="text/css">
+<!--
+#kotowaza {
+	font-size: 50pt;
+	font-weight: bold;
+	background:yellow;
+}
+
+.unsei {
+	font-size: 50pt;
+	font-weight: bold;
+	background:pink;
+}
+
+em {
+	color: blue;
+	font-style: normal;
+}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+var proverbs = new Array(5);
+proverbs[0] = "急がば回れ";
+proverbs[1] = "<em>弘法</em>も筆の誤り";
+proverbs[2] = "<em>時</em>は金なり";
+proverbs[3] = "飼い<em>犬</em>に手をかまれる";
+proverbs[4] = "義を見てせざるは<em>勇無き</em>なり";
+
+$(function(){
+	// ことわざを変更する
+	$("#changeKotowazaBtn").click(function(){
+		var num =Math.floor(proverbs.length * Math.random());	
+		$("#kotowaza").html(proverbs[num]);
+	});
+
+	// ことわざの表示/非表示を切り替える
+	$("#showHideBtn").toggle(function(){
+		$("#kotowaza:not(:animated)").hide("slow");
+		$("#showHideBtn").val("ことわざを表示する");	
+	}, function() {
+		$("#kotowaza:not(:animated)").show("slow");
+		$("#showHideBtn").val("ことわざを消す");	
+	})
+
+	// 占いを表示
+	$("#showUnsei").click(function(){
+		var unseis = ["大吉", "中吉", "凶"];	
+		unsei = unseis[Math.floor(unseis.length * Math.random())];	
+		$("body").append("<div class='unsei'>" + unsei  + "</div>");	
+	});
+
+	//最後の占いを消去
+	$("#removeUnsei").click(function(){
+		$("div.unsei:last").remove();
+	})
+});	
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<form name="form1"><p>
+<input type="button" id="changeKotowazaBtn" value="チェンジ">
+<input type="button" id="showHideBtn" value="ことわざを消す">
+<input type="button" id="showUnsei" value="占う">
+<input type="button" id="removeUnsei" value="占いを消す">
+</p></form>
+
+<h1>今日のことわざ</h1>
+<div id="kotowaza">
+<em>猿</em>も木から落ちる
+</div>
+
+</body>
+</html>
